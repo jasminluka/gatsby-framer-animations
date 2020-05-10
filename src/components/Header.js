@@ -6,7 +6,7 @@ import { useGlobalStateContext, useGlobalDispatchContext } from '../context/glob
 import { HeaderNav, Logo, Menu } from '../styles/headerStyles';
 import { Container, Flex } from '../styles/globalStyles';
 
-const Header = () => {
+const Header = ({ onCursor }) => {
   const { currentTheme } = useGlobalStateContext();
   const dispatch = useGlobalDispatchContext();
 
@@ -31,9 +31,17 @@ const Header = () => {
     >
       <Container>
         <Flex spaceBetween noHeight>
-          <Logo>
+          <Logo
+            onMouseEnter={() => onCursor('hovered')}
+            onMouseLeave={() => onCursor()}
+          >
             <Link to='/'>FURR</Link>
-            <span onClick={toggleTheme}></span>
+            <span
+              onClick={toggleTheme}
+              onMouseEnter={() => onCursor('pointer')}
+              onMouseLeave={() => onCursor()}
+            >
+            </span>
             <Link to='/'>W</Link>
           </Logo>
           <Menu>
@@ -45,7 +53,7 @@ const Header = () => {
         </Flex>
       </Container>
     </HeaderNav>
-  )
+  );
 }
 
 export default Header;
