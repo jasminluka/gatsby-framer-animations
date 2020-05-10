@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { useGlobalDispatchContext } from '../context/globalContext';
 import { useGlobalStateContext } from '../context/globalContext';
 
 import { Cursor } from '../styles/globalStyles';
