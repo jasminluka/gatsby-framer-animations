@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-
-// Styled components
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+
+import Header from './Header';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -40,17 +40,20 @@ const Layout = ({ children }) => {
 
   const darkTheme = {
     background: '#000',
-    text: '#fff'
+    text: '#fff',
+    red: '#ea291e'
   }
 
   const lightTheme = {
     background: '#fff',
-    text: '#000'
+    text: '#000',
+    red: '#ea291e'
   }
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
+      <Header />
       <main>{children}</main>
     </ThemeProvider>
   );
