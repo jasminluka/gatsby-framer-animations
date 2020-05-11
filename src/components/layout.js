@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 import Header from './Header';
+import Navigation from './Navigation';
 import CustomCursor from './CustomCursor';
 import { useGlobalStateContext, useGlobalDispatchContext } from '../context/globalContext';
 
@@ -50,11 +51,22 @@ const Layout = ({ children }) => {
     dispatch({ type: 'CURSOR_TYPE', cursorType });
   }
 
+  const [toggleMenu, setToggleMenu] = useState(false);
+
   return (
     <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyle />
-      <CustomCursor />
-      <Header onCursor={onCursor} />
+      <CustomCursor toggleMenu={toggleMenu} />
+      <Header
+        onCursor={onCursor}
+        toggleMenu={toggleMenu}
+        setToggleMenu={setToggleMenu}
+      />
+      <Navigation
+        onCursor={onCursor}
+        toggleMenu={toggleMenu}
+        setToggleMenu={setToggleMenu}
+      />
       <main>{children}</main>
     </ThemeProvider>
   );
