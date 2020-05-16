@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { Container, Flex } from '../styles/globalStyles';
 import { Nav, NavHeader, CloseNav, NavList, NavFooter, NavVideos } from '../styles/navigationStyles';
+import { FooterContent, FooterSocial } from '../styles/footerStyles';
+import { Instagram, Facebook, Vimeo } from "../assets/svg/social-icons";
 
 const navRoutes = [
   {
@@ -127,7 +129,40 @@ const Navigation = ({ onCursor, toggleMenu, setToggleMenu }) => {
                   </ul>
                 </NavList>
                 <NavFooter>
-
+                  <Flex spaceBetween>
+                    <FooterContent>
+                      <p>info@furrow.studio</p>
+                    </FooterContent>
+                    <FooterContent wider>
+                    <p>902.315.1279</p>
+                    </FooterContent>
+                    <FooterSocial>
+                      <a
+                        onMouseEnter={() => onCursor('pointer')}
+                        onMouseLeave={onCursor}
+                        href="/"
+                        target="_blank"
+                      >
+                        <Instagram />
+                      </a>
+                      <a
+                        onMouseEnter={() => onCursor('pointer')}
+                        onMouseLeave={onCursor}
+                        href="/"
+                        target="_blank"
+                      >
+                        <Facebook />
+                      </a>
+                      <a
+                        onMouseEnter={() => onCursor('pointer')}
+                        onMouseLeave={onCursor}
+                        href="/"
+                        target="_blank"
+                      >
+                        <Vimeo />
+                      </a>
+                    </FooterSocial>
+                  </Flex>
                 </NavFooter>
                 <NavVideos>
                   <motion.div

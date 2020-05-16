@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { useStaticQuery, graphql } from "gatsby"
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 import Header from './Header';
+import Footer from './Footer';
 import Navigation from './Navigation';
 import CustomCursor from './CustomCursor';
 import { useGlobalStateContext, useGlobalDispatchContext } from '../context/globalContext';
@@ -30,6 +32,16 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+  
   const [hamburgerMenuPosition, setHamburgerMenuPosition] = useState({ x: 0, y: 0 });
 
   const darkTheme = {
@@ -68,6 +80,7 @@ const Layout = ({ children }) => {
         toggleMenu={toggleMenu}
         setToggleMenu={setToggleMenu}
         setHamburgerMenuPosition={setHamburgerMenuPosition}
+        siteTitle={data.site.siteMetadata.title}
       />
       <Navigation
         onCursor={onCursor}
@@ -75,6 +88,9 @@ const Layout = ({ children }) => {
         setToggleMenu={setToggleMenu}
       />
       <main>{children}</main>
+      <Footer
+        onCursor={onCursor}
+      />
     </ThemeProvider>
   );
 }
