@@ -33,7 +33,7 @@ const Header = ({ onCursor, toggleMenu, setToggleMenu }) => {
         <Flex spaceBetween noHeight>
           <Logo
             onMouseEnter={() => onCursor('hovered')}
-            onMouseLeave={() => onCursor()}
+            onMouseLeave={onCursor}
           >
             <Link to='/'>FURR</Link>
             <span

@@ -38,7 +38,7 @@ export const Flex = styled.div`
     justify-content: flex-end;
   `}
   ${props => props.alignTop && css`
-    align-items: top;
+    align-items: flex-start;
   `}
   ${props => props.noHeight && css`
     height: 0;
