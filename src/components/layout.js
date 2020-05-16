@@ -30,16 +30,22 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Layout = ({ children }) => {
+  const [hamburgerMenuPosition, setHamburgerMenuPosition] = useState({ x: 0, y: 0 });
+
   const darkTheme = {
     background: '#000',
     text: '#fff',
-    red: '#ea291e'
+    red: '#ea291e',
+    left: `${hamburgerMenuPosition.x}px`,
+    top: `${hamburgerMenuPosition.y}px`
   }
 
   const lightTheme = {
     background: '#fff',
     text: '#000',
-    red: '#ea291e'
+    red: '#ea291e',
+    left: `${hamburgerMenuPosition.x}px`,
+    top: `${hamburgerMenuPosition.y}px`
   }
 
   const { currentTheme, cursorStyles } = useGlobalStateContext();
@@ -61,6 +67,7 @@ const Layout = ({ children }) => {
         onCursor={onCursor}
         toggleMenu={toggleMenu}
         setToggleMenu={setToggleMenu}
+        setHamburgerMenuPosition={setHamburgerMenuPosition}
       />
       <Navigation
         onCursor={onCursor}
