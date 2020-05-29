@@ -8,6 +8,12 @@ const useWindowSize = () => {
         height: window.innerHeight
       }
     }
+    else {
+      return {
+        width: 0,
+        height: 0
+      }
+    }
   }
 
   const [windowSize, setWindowSize] = useState(getSize);
