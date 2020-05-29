@@ -6,7 +6,7 @@ import { Banner, Video, Canvas, BannerTitle, Headline } from '../../styles/homeS
 
 const HomeBanner = ({ onCursor }) => {
   let canvas = useRef(null);
-  const { width = 0, height = 0 } = useWindowSize();
+  const { width, height } = useWindowSize();
   const { currentTheme } = useGlobalStateContext();
   
   useEffect(() => {
