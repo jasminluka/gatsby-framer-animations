@@ -8,8 +8,6 @@ const HomeBanner = ({ onCursor }) => {
   let canvas = useRef(null);
   const { width, height } = useWindowSize();
   const { currentTheme } = useGlobalStateContext();
-
-  console.log(width, height)
   
   useEffect(() => {
     let renderingElement = canvas.current;
